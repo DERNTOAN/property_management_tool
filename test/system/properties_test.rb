@@ -25,7 +25,7 @@ class PropertiesTest < ApplicationSystemTestCase
     fill_in "property_number_of_rooms", with: 2
     fill_in "property_number_of_rooms", with: 2
 
-    click_on 'Create Property'
+    click_on 'Submit'
 
     assert_equal properties_path, page.current_path
     assert_selector "h1", text: "properties"
@@ -36,7 +36,7 @@ class PropertiesTest < ApplicationSystemTestCase
     select 'House', from: 'property_property_type'
     fill_in "property_street", with: "Spanische Alle"
     fill_in "property_house_number", with: 79
-    click_on 'Create Property'
+    click_on 'Submit'
 
     assert_equal properties_path, page.current_path
     assert_selector "h1", text: "New Property"
@@ -44,6 +44,9 @@ class PropertiesTest < ApplicationSystemTestCase
 
   test "advances a property to the next stage" do
     visit '/properties'
-    click_link(1)
+    first('.btn').click
+    # check if stage has changed
   end
+  # write another test for checking if stage can be reversed
+  # write another test for checking if sold is last stage
 end

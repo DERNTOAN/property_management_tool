@@ -17,6 +17,7 @@
         <th>Year of Construction</th>
         <th>Descriptiom</th>
         <th>Stage</th>
+        <th>Advance Stage</th>
         <th> </th>
       </tr>
     </thead>
@@ -24,7 +25,7 @@
       <% @properties.each do |property| %>
       <tr>
         <td><%= property.property_type.capitalize %></td>
-        <td><%= property.street %></td>
+        <td><%= link_to property.street, property_path(property) %></td>
         <td><%= property.house_number %></td>
         <td><%= property.zip_code %></td>
         <td><%= property.city %></td>
@@ -33,11 +34,19 @@
         <td><%= property.number_of_rooms %></td>
         <td><%= property.construction_year %></td>
         <td><%= property.description %></td>
-        <td><%= property.show_stage %></td>
-        <td><%= link_to "Edit", edit_property_path(property), id: property.id %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+        <td class="stage"><%= property.show_stage %></td>
+        <td><%= form_tag update_stage_properties_path do %>
+          <%= hidden_field_tag 'token', property.id %>
+          <%= submit_tag "Advance", class: 'btn btn-primary' %>
+          <% end %>
+          <%= form_tag update_stage_properties_path do %>
+          <%= hidden_field_tag 'token1', property.id %>
+          <%= submit_tag "Lost", class: 'btn btn-primary' %>
+          <% end %></td>
+          <td><%= link_to "Edit", edit_property_path(property), id: property.id %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-</div>
+  </div>

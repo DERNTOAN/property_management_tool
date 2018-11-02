@@ -5,6 +5,7 @@ class PropertiesController < ApplicationController
 
   def create
     @property = Property.new(property_params)
+    @property.stage = 0
     if @property.save
       redirect_to properties_path
     else
@@ -31,21 +32,28 @@ class PropertiesController < ApplicationController
   end
 
   def update_stage
-    Property.update_stage(params[:commit])
+    if params[:token]
+      @property = Property.find(params[:token].to_i)
+      @property.update_stage(1)
+    else
+      @property = Property.find(params[:token1].to_i)
+      @property.update_stage(2)
+    end
+    redirect_to properties_path
   end
 
   private
 
   def property_params
     params.require(:property).permit(:property_type,
-    :street,
-    :house_number,
-    :zip_code,
-    :city,
-    :living_space,
-    :plot_area,
-    :number_of_rooms,
-    :construction_year,
-    :description)
+      :street,
+      :house_number,
+      :zip_code,
+      :city,
+      :living_space,
+      :plot_area,
+      :number_of_rooms,
+      :construction_year,
+      :description)
   end
 end

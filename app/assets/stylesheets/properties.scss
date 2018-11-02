@@ -44,4 +44,13 @@
   color: #da552f;
   text-decoration: none;
 }
+.form-wrapper {
+  text-align: center;
+  .inner-form-wrapper {
+    display: flex;
+    width: 500px;
+    justify-content: space-between;
+  }
+
+}
 
