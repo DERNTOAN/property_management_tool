@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  property_type: MyString
+  street: MyString
+  house_number: 1
+  zip_code: 1
+  city: MyString
+  living_space: 1
+  plot_area: MyString
+  number_of_rooms: 1
+  construction_year: 1
+  description: MyText
+
+two:
+  property_type: MyString
+  street: MyString
+  house_number: 1
+  zip_code: 1
+  city: MyString
+  living_space: 1
+  plot_area: MyString
+  number_of_rooms: 1
+  construction_year: 1
+  description: MyText

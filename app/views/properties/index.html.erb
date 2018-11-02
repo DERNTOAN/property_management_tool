@@ -1,0 +1,43 @@
+<div class="wrapper">
+
+  <h1>All properties</h1>
+
+
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th>Property Type</th>
+        <th>Street</th>
+        <th>House-Number</th>
+        <th>Zip-Code</th>
+        <th>City</th>
+        <th>Living-Space</th>
+        <th>Plot Area</th>
+        <th>Number of Rooms</th>
+        <th>Year of Construction</th>
+        <th>Descriptiom</th>
+        <th>Stage</th>
+        <th> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @properties.each do |property| %>
+      <tr>
+        <td><%= property.property_type.capitalize %></td>
+        <td><%= property.street %></td>
+        <td><%= property.house_number %></td>
+        <td><%= property.zip_code %></td>
+        <td><%= property.city %></td>
+        <td><%= property.living_space %></td>
+        <td><%= property.plot_area %></td>
+        <td><%= property.number_of_rooms %></td>
+        <td><%= property.construction_year %></td>
+        <td><%= property.description %></td>
+        <td><%= property.show_stage %></td>
+        <td><%= link_to "Edit", edit_property_path(property), id: property.id %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>
